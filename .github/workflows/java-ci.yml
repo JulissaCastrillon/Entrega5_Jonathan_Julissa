@@ -1,0 +1,28 @@
+name: Flujo CI Java con Maven
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar repositorio
+      uses: actions/checkout@v4
+
+    - name: Configurar JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Compilar y ejecutar pruebas unitarias con Maven
+      run: mvn -B test
+
+    - name: Ejecutar clase principal Main
+      run: mvn -B compile exec:java -Dexec.mainClass="Calculadora"
