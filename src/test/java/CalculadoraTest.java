@@ -8,4 +8,10 @@ public class CalculadoraTest {
         Calculadora calc = new Calculadora();
         assertEquals(8, calc.sumar(5, 3), "5 + 3 debe ser 8");
     }
+
+        @Test
+    public void testMultiplicar() {
+        Calculadora calc = new Calculadora();
+        assertEquals(15, calc.multiplicar(5, 3), "5 * 3 debe ser 15");
+    }
 }
